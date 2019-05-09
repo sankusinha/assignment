@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+  remote_user: ec2-user
+  tasks:
+    - name: Install nginx server
+      yum:
+        name: nginx
+        state: latest
+    - name: start and enable nginx server
+      service:
+        name: nginx
+        state: started
+        enabled: yes
